@@ -1,13 +1,17 @@
 import React from 'react';
 import './App.css';
-import './style.css';
+import './sass/style.css';
 import Menu from "./Menu";
+import Home from "./Home";
+import TrendsContainer from "./TrendsContainer";
 
 function App() {
     return (
-        <body>
+        <>
         <Menu/>
-        </body>
+        <Home/>
+        <TrendsContainer/>
+        </>
     );
 }
 

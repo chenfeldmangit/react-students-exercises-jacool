@@ -1,31 +1,36 @@
 /* $basic-blue = #1da1f2 */
-body {
+#root {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  align-items: flex-start;
+  margin: auto;
+  max-width: 75em;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", sans-serif;
 }
-body .profile-pic {
+#root .profile-pic {
   border-radius: 9999px;
 }
-body .colored {
+#root .colored {
   filter: invert(46%) sepia(54%) saturate(2316%) hue-rotate(181deg) brightness(106%) contrast(90%);
 }
-body ::placeholder {
+#root .red-colored {
+  filter: invert(18%) sepia(88%) saturate(7472%) hue-rotate(359deg) brightness(95%) contrast(109%);
+}
+#root ::placeholder {
   color: darkgrey;
 }
-body .tab-title {
+#root .tab-title {
   font-size: 19px;
   font-weight: 800;
   margin: 0;
   flex-grow: 2;
 }
-body .boxy {
+#root .boxy {
   border-bottom-style: solid;
   border-bottom-width: 1px;
   border-color: #e6ecf0;
 }
-body .button {
+#root .button {
   background-color: #ffffff;
   border-radius: 9999px;
   border-style: solid;
@@ -39,15 +44,14 @@ body .button {
   font-weight: 700;
   margin: 1em;
 }
-body .button:hover {
+#root .button:hover {
   background-color: #e8f5fe;
 }
-body .button:active {
+#root .button:active {
   position: relative;
   top: 1px;
 }
-body .icon-button {
-  filter: invert(46%) sepia(54%) saturate(2316%) hue-rotate(181deg) brightness(106%) contrast(90%);
+#root .icon-button {
   background-color: rgba(0, 0, 0, 0);
   border-radius: 9999px;
   border-style: none;
@@ -55,11 +59,16 @@ body .icon-button {
   padding: 10px 10px;
   margin: 1em;
 }
-body .icon-button:hover {
+#root .icon-button:hover {
   filter: none;
   background-color: #e8f5fe;
+  border-radius: 9999px;
+  border-style: none;
+  cursor: pointer;
+  padding: 10px 10px;
+  margin: 1em;
 }
-body .inner-tab-name {
+#root .inner-tab-name {
   background-color: #ffffff;
   border-bottom-style: solid;
   border-bottom-width: 1px;
@@ -69,13 +78,13 @@ body .inner-tab-name {
   font-weight: 700;
   margin: 1em;
 }
-body .small-text {
+#root .small-text {
   font-size: 15px;
   font-weight: 400;
   margin-top: 1em;
   margin-bottom: 1em;
 }
-body .modal {
+#root .modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -88,22 +97,22 @@ body .modal {
   overflow-x: hidden;
   overflow-y: hidden;
 }
-body .modal-top-bar {
+#root .modal-top-bar {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-body .post-container {
+#root .post-container {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 1em;
+  padding: 1em 1em 0 1em;
 }
-body .post-container .post-face {
+#root .post-container .post-face {
   border-radius: 9999px;
   padding: 1em;
 }
-body .post-container article {
+#root .post-container article {
   padding-left: 1em;
   padding-right: 1em;
   display: flex;
@@ -111,64 +120,64 @@ body .post-container article {
   flex-flow: column;
   flex-grow: 2;
 }
-body .post-container article .author {
+#root .post-container article .author {
   margin-block-start: 0;
   margin-block-end: 0;
   margin: 0;
   font-size: 15px;
 }
-body .post-container article .post-text {
+#root .post-container article .post-text {
   margin-block-start: 0;
   margin-block-end: 0;
   margin: 0;
   font-size: 15px;
 }
-body .post-container article .post-toolbar {
+#root .post-container article .post-toolbar {
   padding-top: 1em;
   padding-right: 5em;
-  filter: invert(45%) sepia(22%) saturate(324%) hue-rotate(165deg) brightness(96%) contrast(94%);
+  padding-bottom: 0.1em;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
-body #menu-container {
+#root #menu-container {
   flex-direction: column;
   flex-grow: 1;
 }
-body #menu-container #logo {
+#root #menu-container #logo {
   margin-bottom: 1.5em;
 }
-body #menu-container #menu {
+#root #menu-container #menu {
   padding: unset;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 }
-body #menu-container #menu li {
+#root #menu-container #menu li {
   list-style-type: none;
-  margin-bottom: 0.4em;
+  margin-bottom: 1em;
   display: flex;
   align-items: center;
   padding: 0.5em 1.5em 0.5em 0.5em;
   cursor: pointer;
 }
-body #menu-container #menu li .menu-item-text {
+#root #menu-container #menu li .menu-item-text {
   padding-left: 1.2em;
   font-size: 19px;
   font-weight: 700;
 }
 @media screen and (max-width: 600px) {
-  body #menu-container #menu li .menu-item-text {
+  #root #menu-container #menu li .menu-item-text {
     display: none;
   }
 }
-body #menu-container #menu li:hover {
+#root #menu-container #menu li:hover {
   background-color: #e8f5fe;
   border-radius: 9999px;
   color: #1da1f2;
 }
-body #feed-container {
+#root #feed-container {
   display: flex;
   flex-direction: column;
   flex-basis: 50%;
@@ -179,7 +188,7 @@ body #feed-container {
   border-right-width: 1px;
   border-color: #e6ecf0;
 }
-body #feed-container #tab-title-container {
+#root #feed-container #tab-title-container {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -188,41 +197,41 @@ body #feed-container #tab-title-container {
   padding-left: 1em;
   padding-right: 1em;
 }
-body #feed-container #twitting-container {
+#root #feed-container #twitting-container {
   display: flex;
   flex-direction: row;
   padding-top: 1em;
   padding-bottom: 1em;
   padding-left: 1em;
 }
-body #feed-container #twitting-container #twitting-box {
+#root #feed-container #twitting-container #twitting-box {
   display: flex;
   flex-direction: column;
   flex-grow: 10;
   padding-left: 1em;
   padding-right: 1em;
 }
-body #feed-container #twitting-container #twitting-box #twitting-input {
+#root #feed-container #twitting-container #twitting-box #twitting-input {
   border: none;
   font-size: 19px;
   font-weight: 400;
   padding-top: 1em;
   padding-bottom: 1em;
 }
-body #feed-container #twitting-container #twitting-box #twitting-toolbar-container {
+#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
-body #feed-container #twitting-container #twitting-box #twitting-toolbar-container #twitting-toolbar {
+#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #twitting-toolbar {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
 }
-body #feed-container #twitting-container #twitting-box #twitting-toolbar-container #twitting-toolbar .tool-button {
+#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #twitting-toolbar .tool-button {
   padding: 0.5em;
 }
-body #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet {
+#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet {
   background-color: #1da1f2;
   opacity: 0.5;
   border-radius: 9999px;
@@ -234,14 +243,14 @@ body #feed-container #twitting-container #twitting-box #twitting-toolbar-contain
   text-decoration: none;
   font-weight: 700;
 }
-body #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet:hover {
+#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet:hover {
   opacity: 1;
 }
-body #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet:active {
+#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet:active {
   position: relative;
   top: 1px;
 }
-body #profile-container {
+#root #profile-container {
   display: none;
   flex-direction: column;
   flex-basis: 50%;
@@ -251,7 +260,7 @@ body #profile-container {
   border-right-width: 1px;
   border-color: #e6ecf0;
 }
-body #profile-container .profile-face {
+#root #profile-container .profile-face {
   margin-top: -80px;
   margin-left: 0.5em;
   border-color: #ffffff;
@@ -259,24 +268,24 @@ body #profile-container .profile-face {
   border-style: solid;
   border-radius: 9999px;
 }
-body #profile-container .back-nav {
+#root #profile-container .back-nav {
   display: flex;
   flex-direction: row;
   justify-content: left;
   align-items: center;
   margin-left: 2em;
 }
-body #profile-container #profile-pic-bar {
+#root #profile-container #profile-pic-bar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
 }
-body #profile-container #profile-details {
+#root #profile-container #profile-details {
   margin-left: 0.8em;
   margin-right: 0.8em;
 }
-body #profile-container #profile-edit-container {
+#root #profile-container #profile-edit-container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -290,7 +299,7 @@ body #profile-container #profile-edit-container {
   min-width: 600px;
   max-width: 80vw;
 }
-body #profile-container #profile-edit-container .profile-edit-field-container {
+#root #profile-container #profile-edit-container .profile-edit-field-container {
   display: flex;
   flex-direction: column;
   align-items: stretch;
@@ -298,7 +307,7 @@ body #profile-container #profile-edit-container .profile-edit-field-container {
   width: 100%;
   margin-top: 1em;
 }
-body #profile-container #profile-edit-container .profile-edit-field-container .profile-edit-input {
+#root #profile-container #profile-edit-container .profile-edit-field-container .profile-edit-input {
   border: none;
   font-size: 19px;
   font-weight: 400;
@@ -310,11 +319,11 @@ body #profile-container #profile-edit-container .profile-edit-field-container .p
   border-bottom-color: darkgray;
   border-bottom-width: 2px;
 }
-body #profile-container #profile-edit-container .profile-edit-field-container .profile-edit-input:focus {
+#root #profile-container #profile-edit-container .profile-edit-field-container .profile-edit-input:focus {
   outline: none;
   border-bottom-color: #1da1f2;
 }
-body #profile-container #profile-edit-container .profile-edit-field-container .input-counter {
+#root #profile-container #profile-edit-container .profile-edit-field-container .input-counter {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -323,11 +332,12 @@ body #profile-container #profile-edit-container .profile-edit-field-container .i
   padding-top: 5px;
   background-color: white;
 }
-body #suggestions-container {
+#root #suggestions-container {
   flex-direction: column;
   flex-grow: 1;
+  margin-left: 1.5em;
 }
-body #suggestions-container #search-box {
+#root #suggestions-container #search-box {
   display: flex;
   flex-direction: row;
   align-items: center;
