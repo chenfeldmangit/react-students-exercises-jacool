@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 // import mySvg from './img/home.svg';
 
 class MenuItem extends React.Component {
@@ -17,10 +16,15 @@ class MenuItem extends React.Component {
     }
 }
 
+
+MenuItem.defaultProps = {
+    clickHandler: () => {}
+};
+
 MenuItem.propTypes = {
     path: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
-    clickHandler: PropTypes.func.isRequired
+    clickHandler: PropTypes.func
 };
 
 export default MenuItem;

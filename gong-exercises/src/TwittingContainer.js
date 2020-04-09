@@ -13,7 +13,7 @@ class TwittingContainer extends React.Component {
                             <img src="img/open-gif.svg" width="24" height="24" className="colored tool-button" alt="Open gif"/>
                             <img src="img/smiley.svg" width="24" height="24" className="colored tool-button" alt="Open smiley"/>
                         </div>
-                        <div id="small-tweet" onClick="Tweets.tweet()">Tweet</div>
+                        <div id="small-tweet" onClick={() => {}}>Tweet</div>
                     </div>
                 </div>
             </div>

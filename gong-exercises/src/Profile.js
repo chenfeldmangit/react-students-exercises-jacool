@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import PostContainer from "./PostContainer";
 import Data from "./Data";
 
@@ -23,7 +22,7 @@ class Profile extends React.Component {
                 <img src={this.state.myProfile.background} alt="Background"/>
                 <div id="profile-details">
                     <div id="profile-pic-bar">
-                        <img src={this.state.myProfile.imgPath} width="134" height="134" className="profile-face" alt="Photo"/>
+                        <img src={this.state.myProfile.imgPath} width="134" height="134" className="profile-face" alt="My Face"/>
                         <span onClick={() => {
                         }} className="button">Edit profile</span>
                     </div>
@@ -40,7 +39,7 @@ class Profile extends React.Component {
                     <div id="my-tweets">
                         {
                             this.state.myPosts.map(p =>
-                                <PostContainer post={p} likeHandler={() => {}}/>)
+                                <PostContainer post={p} likeHandler={() => {}} key={p.id}/>)
                         }
                     </div>
                 </div>

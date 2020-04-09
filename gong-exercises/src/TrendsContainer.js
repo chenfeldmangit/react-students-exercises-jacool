@@ -7,7 +7,7 @@ class TrendsContainer extends React.Component {
                 <div id="search-box">
                     <label htmlFor="search-input">
                         <img src="img/search.svg" width="25" height="25" alt="Search" className="icon-button"
-                             onClick="Search.search()"/>
+                             onClick={() => {}}/>
                     </label>
                     <input type="text" id="search-input" placeholder="Search something"/>
                 </div>

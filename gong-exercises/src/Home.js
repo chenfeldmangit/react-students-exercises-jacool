@@ -30,7 +30,7 @@ class Home extends React.Component {
                 <div id="feed">
                     {
                         this.state.posts.map(p => {
-                            return <PostContainer post={p} likeHandler={this.likeHandler}/>;
+                            return <PostContainer post={p} likeHandler={this.likeHandler} key={p.id}/>;
                         })
                     }
                 </div>

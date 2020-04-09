@@ -20,6 +20,8 @@ class App extends React.Component {
                 return <Home/>;
             case App.PROFILE:
                 return <Profile/>;
+            default:
+                alert(`Unexpected tab name passed "${this.state.currentTab}"`);
         }
     };
 
