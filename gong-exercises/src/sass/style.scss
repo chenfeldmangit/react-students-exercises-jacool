@@ -118,7 +118,7 @@ $counter-grey-filter: invert(50%) sepia(9%) saturate(853%) hue-rotate(165deg) br
   }
 
   .modal {
-    display: none;
+    display: flex;
     position: fixed;
     z-index: 1;
     left: 0;

@@ -1,34 +1,42 @@
 import React from 'react';
 import PostContainer from "./PostContainer";
 import Data from "./Data";
+import ProfileEditor from "./ProfileEditor";
 
 class Profile extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             myProfile: Data.myProfile(),
-            myPosts: []
+            myPosts: [],
+            showEdit: false
         };
     }
 
     async componentDidMount() {
         const posts = await Data.getPosts();
         const myPosts = posts.filter(p => p.author === this.state.myProfile.name);
-        this.setState((state, props) => {
-            return {myProfile: state.myProfile, myPosts: myPosts}
-        });
+        this.setState({myPosts: myPosts});
     }
 
     deleteHandler = (id) => {
         this.setState((state, props) => {
             const posts = state.myPosts.filter(p => p.id !== id);
-            return {
-                myProfile: state.myProfile,
-                myPosts: posts
-            };
+            return {myPosts: posts};
         });
 
         Data.removePost(id);
+    };
+
+    editHandler = () => {
+        this.setState({showEdit: true})
+    };
+
+    closeEditHandler = (editedProfile) => {
+        if (editedProfile != null)
+            this.setState({myProfile:editedProfile, showEdit: false});
+        else
+            this.setState({showEdit: false});
     };
 
     render() {
@@ -41,10 +49,8 @@ class Profile extends React.Component {
                 <img src={this.state.myProfile.background} alt="Background"/>
                 <div id="profile-details">
                     <div id="profile-pic-bar">
-                        <img src={this.state.myProfile.imgPath} width="134" height="134" className="profile-face"
-                             alt="My Face"/>
-                        <span onClick={() => {
-                        }} className="button">Edit profile</span>
+                        <img src={this.state.myProfile.imgPath} width="134" height="134" className="profile-face" alt="My Face"/>
+                        <span onClick={this.editHandler} className="button">Edit profile</span>
                     </div>
                     <div id="profile-data-bar">
                         <h2 className="tab-title" id="profile-name">{this.state.myProfile.name}</h2>
@@ -72,6 +78,10 @@ class Profile extends React.Component {
                         }
                     </div>
                 </div>
+
+                {
+                    this.state.showEdit && <ProfileEditor profile={this.state.myProfile} closeHandler={this.closeEditHandler}/>
+                }
             </div>
         );
     }
