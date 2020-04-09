@@ -251,7 +251,7 @@
   top: 1px;
 }
 #root #profile-container {
-  display: none;
+  display: flex;
   flex-direction: column;
   flex-basis: 50%;
   border-left-style: solid;

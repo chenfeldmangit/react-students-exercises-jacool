@@ -307,7 +307,7 @@ $white-filter: invert(0%) sepia(10%) saturate(6750%) hue-rotate(215deg) brightne
   }
 
   #profile-container {
-    display: none;
+    display: flex;
     flex-direction: column;
     flex-basis: 50%;
 
