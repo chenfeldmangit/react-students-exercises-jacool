@@ -6,13 +6,10 @@ import Data from "./Data";
 class Profile extends React.Component {
     constructor(props) {
         super(props);
+        const myProfile = Data.myProfile();
         this.state = {
-            myPosts: Data.getData().filter(p => p.author === "Jacob Eckel"),
-            myProfile: {
-                name: "Jacob Eckel",
-                handle: "@eckely",
-                bio: "Software developer since the last century"
-            }
+            myProfile: myProfile,
+            myPosts: Data.getPosts().filter(p => p.author === myProfile.name)
         };
     }
 
@@ -23,10 +20,10 @@ class Profile extends React.Component {
                     <img src="img/back-arrow.svg" width="16" height="16" className="colored" alt="Back"/>
                     <h2 className="tab-title" id="profile-top-name">{this.state.myProfile.name}</h2>
                 </div>
-                <img src="img/profile-back.jfif" alt="Background"/>
+                <img src={this.state.myProfile.background} alt="Background"/>
                 <div id="profile-details">
                     <div id="profile-pic-bar">
-                        <img src="img/jacob.jpeg" width="134" height="134" className="profile-face" alt="Photo"/>
+                        <img src={this.state.myProfile.imgPath} width="134" height="134" className="profile-face" alt="Photo"/>
                         <span onClick={() => {
                         }} className="button">Edit profile</span>
                     </div>

@@ -7,7 +7,7 @@ import Data from "./Data"
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {posts: Data.getData()};
+        this.state = {posts: Data.getPosts()};
     }
 
     likeHandler = (id) => {

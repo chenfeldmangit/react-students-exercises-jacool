@@ -1,6 +1,16 @@
 class Data {
-    static getData() {
+    static getPosts() {
         return Object.freeze(Data.examplePosts);
+    }
+
+    static myProfile() {
+        return {
+            name: "Jacob Eckel",
+            handle: "@eckely",
+            bio: "Software developer since the last century",
+            imgPath: "img/jacob.jpeg",
+            background: "img/profile-back.jfif"
+        };
     }
 }
 
