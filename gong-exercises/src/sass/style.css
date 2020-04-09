@@ -16,6 +16,9 @@
 #root .red-colored {
   filter: invert(18%) sepia(88%) saturate(7472%) hue-rotate(359deg) brightness(95%) contrast(109%);
 }
+#root .grey-colored {
+  filter: invert(50%) sepia(9%) saturate(853%) hue-rotate(165deg) brightness(88%) contrast(91%);
+}
 #root ::placeholder {
   color: darkgrey;
 }
@@ -56,17 +59,12 @@
   border-radius: 9999px;
   border-style: none;
   cursor: pointer;
-  padding: 10px 10px;
-  margin: 1em;
+  padding: 8px 8px;
+  margin: 2px;
 }
 #root .icon-button:hover {
   filter: none;
   background-color: #e8f5fe;
-  border-radius: 9999px;
-  border-style: none;
-  cursor: pointer;
-  padding: 10px 10px;
-  margin: 1em;
 }
 #root .inner-tab-name {
   background-color: #ffffff;

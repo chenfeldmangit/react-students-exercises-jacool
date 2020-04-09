@@ -10,10 +10,10 @@ class PostContainer extends React.Component {
                     <h3 className="author">{this.props.post.author}</h3>
                     <p className="post-text">{this.props.post.text}</p>
                     <div className="post-toolbar">
-                        <img src="img/reply.svg" width="16" height="16" alt="Reply" className="icon-button"/>
-                        <img src="img/retweet.svg" width="16" height="16" alt="Retweet" className="icon-button"/>
-                        <img src={this.props.post.like ? "img/liked.svg" : "img/heart.svg"} width="16" height="16" alt="Like" className={"icon-button " + (this.props.post.like ? "red-colored" : "blue-colored")} onClick={() => this.props.likeHandler(this.props.post.id)}/>
-                        <img src="img/close.svg" width="16" height="16" alt="Delete" className="icon-button"/>
+                        <img src="img/reply.svg" width="18" height="18" alt="Reply" className="icon-button grey-colored"/>
+                        <img src="img/retweet.svg" width="18" height="18" alt="Retweet" className="icon-button grey-colored"/>
+                        <img src={this.props.post.like ? "img/liked.svg" : "img/heart.svg"} width="18" height="18" alt="Like" className={"icon-button " + (this.props.post.like ? "red-colored" : "grey-colored")} onClick={() => this.props.likeHandler(this.props.post.id)}/>
+                        <img src="img/close.svg" width="18" height="18" alt="Delete" className="icon-button grey-colored"/>
                     </div>
                 </article>
             </div>
