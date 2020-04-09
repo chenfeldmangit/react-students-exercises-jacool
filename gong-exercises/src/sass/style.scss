@@ -262,6 +262,7 @@ $counter-grey-filter: invert(50%) sepia(9%) saturate(853%) hue-rotate(165deg) br
           font-weight: 400;
           padding-top: 1em;
           padding-bottom: 1em;
+          outline: none;
         }
 
         #twitting-toolbar-container {
@@ -280,23 +281,30 @@ $counter-grey-filter: invert(50%) sepia(9%) saturate(853%) hue-rotate(165deg) br
           }
 
           #small-tweet {
-            background-color: $basic-blue;
+            background-color: $very-light-blue;
             opacity: 0.5;
             border-radius: 9999px;
+            border: none;
+            outline: none;
             display: inline-block;
-            cursor: pointer;
-            color: #ffffff;
+            color: #999999;
             font-size: 15px;
             padding: 10px 18px;
             text-decoration: none;
             font-weight: 700;
           }
 
-          #small-tweet:hover {
+          #small-tweet:enabled {
+            background-color: $basic-blue;
+            color: #ffffff;
+            cursor: pointer;
+          }
+
+          #small-tweet:hover:enabled {
             opacity: 1;
           }
 
-          #small-tweet:active {
+          #small-tweet:active:enabled {
             position: relative;
             top: 1px;
           }

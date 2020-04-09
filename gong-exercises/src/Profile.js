@@ -5,12 +5,31 @@ import Data from "./Data";
 class Profile extends React.Component {
     constructor(props) {
         super(props);
-        const myProfile = Data.myProfile();
         this.state = {
-            myProfile: myProfile,
-            myPosts: Data.getPosts().filter(p => p.author === myProfile.name)
+            myProfile: Data.myProfile(),
+            myPosts: []
         };
     }
+
+    async componentDidMount() {
+        const posts = await Data.getPosts();
+        const myPosts = posts.filter(p => p.author === this.state.myProfile.name);
+        this.setState((state, props) => {
+            return {myProfile: state.myProfile, myPosts: myPosts}
+        });
+    }
+
+    deleteHandler = (id) => {
+        this.setState((state, props) => {
+            const posts = state.myPosts.filter(p => p.id !== id);
+            return {
+                myProfile: state.myProfile,
+                myPosts: posts
+            };
+        });
+
+        Data.removePost(id);
+    };
 
     render() {
         return (
@@ -22,7 +41,8 @@ class Profile extends React.Component {
                 <img src={this.state.myProfile.background} alt="Background"/>
                 <div id="profile-details">
                     <div id="profile-pic-bar">
-                        <img src={this.state.myProfile.imgPath} width="134" height="134" className="profile-face" alt="My Face"/>
+                        <img src={this.state.myProfile.imgPath} width="134" height="134" className="profile-face"
+                             alt="My Face"/>
                         <span onClick={() => {
                         }} className="button">Edit profile</span>
                     </div>
@@ -38,8 +58,17 @@ class Profile extends React.Component {
                     </div>
                     <div id="my-tweets">
                         {
-                            this.state.myPosts.map(p =>
-                                <PostContainer post={p} likeHandler={() => {}} key={p.id}/>)
+                            this.state.myPosts.length === 0 ?
+                                (
+                                    <div id="throbber" className="post-container boxy">
+                                        <article>
+                                            <h3>Loading Tweets...</h3>
+                                        </article>
+                                    </div>
+                                ) : (
+                                    this.state.myPosts.map(p =>
+                                        <PostContainer post={p} deleteHandler={this.deleteHandler} key={p.id}/>)
+                                )
                         }
                     </div>
                 </div>

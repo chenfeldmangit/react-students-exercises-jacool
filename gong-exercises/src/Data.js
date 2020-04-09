@@ -1,6 +1,8 @@
+import Local from "./Local";
+
 class Data {
-    static getPosts() {
-        return Object.freeze(Data.examplePosts);
+    static async getPosts() {
+        return Object.freeze(await Local.readPosts(Data.examplePosts));
     }
 
     static myProfile() {
@@ -11,6 +13,25 @@ class Data {
             imgPath: "img/jacob.jpeg",
             background: "img/profile-back.jfif"
         };
+    }
+
+    static createMyPost(tweetText) {
+        const me = Data.myProfile();
+        return {
+            id: (Math.round(Math.random()*1000000000000000)).toString(),
+            author: me.name,
+            text: tweetText,
+            authorImage: me.imgPath,
+            like: false
+        };
+    }
+
+    static addNewPost(post) {
+        Local.addPostToLocal(post);
+    }
+
+    static removePost(uid) {
+        Local.removePostFromLocal(uid);
     }
 }
 

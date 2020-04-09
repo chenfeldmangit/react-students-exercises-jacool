@@ -215,6 +215,7 @@
   font-weight: 400;
   padding-top: 1em;
   padding-bottom: 1em;
+  outline: none;
 }
 #root #feed-container #twitting-container #twitting-box #twitting-toolbar-container {
   display: flex;
@@ -230,21 +231,27 @@
   padding: 0.5em;
 }
 #root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet {
-  background-color: #1da1f2;
+  background-color: #e8f5fe;
   opacity: 0.5;
   border-radius: 9999px;
+  border: none;
+  outline: none;
   display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
+  color: #999999;
   font-size: 15px;
   padding: 10px 18px;
   text-decoration: none;
   font-weight: 700;
 }
-#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet:hover {
+#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet:enabled {
+  background-color: #1da1f2;
+  color: #ffffff;
+  cursor: pointer;
+}
+#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet:hover:enabled {
   opacity: 1;
 }
-#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet:active {
+#root #feed-container #twitting-container #twitting-box #twitting-toolbar-container #small-tweet:active:enabled {
   position: relative;
   top: 1px;
 }

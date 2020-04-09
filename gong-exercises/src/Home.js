@@ -7,31 +7,54 @@ import Data from "./Data"
 class Home extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {posts: Data.getPosts()};
+        this.state = {posts: []};
+    }
+
+    async componentDidMount() {
+        const posts = await Data.getPosts();
+        this.setState({posts: posts});
     }
 
     likeHandler = (id) => {
         this.setState((state, props) => {
             const i = state.posts.findIndex(p => p.id === id);
-            // puke, puke, puke, the framework that requires this should be erased from the face of Earth
             const posts = [...state.posts];
             const post = {...posts[i]};
             post.like = !post.like;
             posts[i] = post;
-            return {posts};
+            return {posts: posts};
         })
+    };
+
+    tweetingHandler = (tweetText) => {
+        const newPost = Data.createMyPost(tweetText);
+        this.setState((state, props) => {
+            const posts = [...state.posts];
+            posts.unshift(newPost);
+            return {posts};
+        });
+        Data.addNewPost(newPost);
     };
 
     render() {
         return (
             <div id="feed-container">
                 <TabTitleContainer name="Home"/>
-                <TwittingContainer/>
+                <TwittingContainer tweetingHandler={this.tweetingHandler}/>
                 <div id="feed">
                     {
-                        this.state.posts.map(p => {
-                            return <PostContainer post={p} likeHandler={this.likeHandler} key={p.id}/>;
-                        })
+                        this.state.posts.length === 0 ?
+                            (
+                                <div id="throbber" className="post-container boxy">
+                                    <article>
+                                        <h3>Loading Tweets...</h3>
+                                    </article>
+                                </div>
+                            ) : (
+                                this.state.posts.map(p => {
+                                    return <PostContainer post={p} likeHandler={this.likeHandler} key={p.id}/>;
+                                })
+                            )
                     }
                 </div>
             </div>
