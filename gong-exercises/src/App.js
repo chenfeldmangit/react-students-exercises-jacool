@@ -19,7 +19,7 @@ class App extends React.Component {
             case App.HOME:
                 return <Home/>;
             case App.PROFILE:
-                return <Profile/>;
+                return <Profile goBackHandler={this.goBackHandler}/>;
             default:
                 alert(`Unexpected tab name passed "${this.state.currentTab}"`);
         }
@@ -27,6 +27,10 @@ class App extends React.Component {
 
     menuHandler = (menu) => {
         this.setState({currentTab: menu});
+    };
+
+    goBackHandler = () => {
+        this.setState({currentTab: App.HOME});
     };
 
     render() {

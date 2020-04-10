@@ -26,8 +26,8 @@ class Home extends React.Component {
         })
     };
 
-    tweetingHandler = (tweetText) => {
-        const newPost = Data.createMyPost(tweetText);
+    tweetingHandler = async (tweetText) => {
+        const newPost = await Data.createMyPost(tweetText);
         this.setState((state, props) => {
             const posts = [...state.posts];
             posts.unshift(newPost);

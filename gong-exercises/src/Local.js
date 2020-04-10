@@ -4,8 +4,8 @@ class Local {
     }
 
     static async readPosts(examplePosts) {
-        await Local.sleep(2000);
-        const tweets = localStorage.getItem(Local.KEY);
+        await Local.sleep(1000);
+        const tweets = localStorage.getItem(Local.POSTS_KEY);
         if (tweets == null) {
             this.store(examplePosts);
             return examplePosts;
@@ -20,7 +20,7 @@ class Local {
     }
 
     static store(posts) {
-        localStorage.setItem(Local.KEY, JSON.stringify(posts));
+        localStorage.setItem(Local.POSTS_KEY, JSON.stringify(posts));
     }
 
     static async removePostFromLocal(uid) {
@@ -33,7 +33,22 @@ class Local {
         const posts = await Local.readPosts();
         return posts.filter(value => value.text.includes(text));
     }
+
+    static async fetchUserProfile(template) {
+        await Local.sleep(1000);
+        const p = localStorage.getItem(Local.PROFILE_KEY);
+        if (p == null) {
+            this.storeProfile(template);
+            return template;
+        }
+        return JSON.parse(p);
+    }
+
+    static storeProfile(profile) {
+        localStorage.setItem(Local.PROFILE_KEY, JSON.stringify(profile));
+    }
 }
-Local.KEY = "tweets";
+Local.POSTS_KEY = "tweets";
+Local.PROFILE_KEY = "profile";
 
 export default Local;

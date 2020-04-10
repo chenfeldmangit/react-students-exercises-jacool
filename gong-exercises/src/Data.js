@@ -5,18 +5,8 @@ class Data {
         return Object.freeze(await Local.readPosts(Data.examplePosts));
     }
 
-    static myProfile() {
-        return {
-            name: "Jacob Eckel",
-            handle: "@eckely",
-            bio: "Software developer since the last century",
-            imgPath: "img/jacob.jpeg",
-            background: "img/profile-back.jfif"
-        };
-    }
-
-    static createMyPost(tweetText) {
-        const me = Data.myProfile();
+    static async createMyPost(tweetText) {
+        const me = await Data.fetchUserProfile();
         return {
             id: (Math.round(Math.random()*1000000000000000)).toString(),
             author: me.name,
@@ -32,6 +22,20 @@ class Data {
 
     static removePost(uid) {
         Local.removePostFromLocal(uid);
+    }
+
+    static async fetchUserProfile() {
+        return await Local.fetchUserProfile({
+            name: "Jacob Eckel",
+            handle: "@eckely",
+            bio: "Software developer since the last century",
+            imgPath: "img/jacob.jpeg",
+            background: "img/profile-back.jfif"
+        });
+    }
+
+    static storeProfile(profile) {
+        Local.storeProfile(profile);
     }
 }
 
