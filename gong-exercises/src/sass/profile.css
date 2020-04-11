@@ -1,0 +1,82 @@
+/* $basic-blue = #1da1f2 */
+/* $basic-blue = #1da1f2 */
+#profileContainer {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-color: #e6ecf0;
+}
+#profileContainer .profile-face {
+  margin-top: -80px;
+  margin-left: 0.5em;
+  border-color: #ffffff;
+  border-width: 5px;
+  border-style: solid;
+  border-radius: 9999px;
+}
+#profileContainer .back-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+}
+#profileContainer #profilePicBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+#profileContainer #profileDetails {
+  margin-left: 0.8em;
+  margin-right: 0.8em;
+}
+#profileContainer #profileEditContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: white;
+  margin: 3em auto;
+  padding: 20px;
+  border: 1px solid #888;
+  border-radius: 14px;
+  max-height: 90vh;
+}
+#profileContainer #profileEditContainer .profile-edit-field-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #f5f8fa;
+  width: 100%;
+  margin-top: 1em;
+}
+#profileContainer #profileEditContainer .profile-edit-field-container .profile-edit-input {
+  border: none;
+  font-size: 1.3em;
+  font-weight: 400;
+  font-style: normal;
+  font-family: inherit;
+  color: #14171a;
+  background-color: transparent;
+  border-bottom-style: solid;
+  border-bottom-color: darkgray;
+  border-bottom-width: 2px;
+}
+#profileContainer #profileEditContainer .profile-edit-field-container .profile-edit-input:focus {
+  outline: none;
+  border-bottom-color: #1da1f2;
+}
+#profileContainer #profileEditContainer .profile-edit-field-container .input-counter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  color: #657786;
+  padding-right: 10px;
+  padding-top: 5px;
+  background-color: white;
+}
+
+/*# sourceMappingURL=profile.css.map */

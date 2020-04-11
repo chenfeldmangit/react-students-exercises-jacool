@@ -1,0 +1,39 @@
+/* $basic-blue = #1da1f2 */
+#menuContainer {
+  flex-direction: column;
+  flex-grow: 1;
+}
+#menuContainer #logo {
+  margin-bottom: 1.5em;
+}
+#menuContainer #menu {
+  padding: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+#menuContainer #menu li {
+  list-style-type: none;
+  margin-bottom: 1em;
+  display: flex;
+  align-items: center;
+  padding: 0.5em 1.5em 0.5em 0.5em;
+  cursor: pointer;
+}
+#menuContainer #menu li .menu-item-text {
+  padding-left: 1.2em;
+  font-size: 1.3em;
+  font-weight: 700;
+}
+@media screen and (max-width: 600px) {
+  #menuContainer #menu li .menu-item-text {
+    display: none;
+  }
+}
+#menuContainer #menu li:hover {
+  background-color: #e8f5fe;
+  border-radius: 9999px;
+  color: #1da1f2;
+}
+
+/*# sourceMappingURL=menu.css.map */

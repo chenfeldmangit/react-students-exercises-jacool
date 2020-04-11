@@ -1,0 +1,16 @@
+/* $basic-blue = #1da1f2 */
+#suggestionsContainer {
+  flex-direction: column;
+  flex-grow: 1;
+  margin-left: 1.5em;
+}
+#suggestionsContainer #searchBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #f5f8fa;
+  border-radius: 9999px;
+  height: 3em;
+}
+
+/*# sourceMappingURL=trends.css.map */
