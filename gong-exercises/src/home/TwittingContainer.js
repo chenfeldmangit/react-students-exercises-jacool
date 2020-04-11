@@ -19,17 +19,17 @@ class TwittingContainer extends React.Component {
 
     render() {
         return (
-            <div id="twitting-container" className="boxy">
+            <div id="twittingContainer" className="boxy">
                 <img src="img/jacob.jpeg" alt="Pic" className="profile-pic" width="50" height="50"/>
-                <div id="twitting-box">
-                    <input type="text" id="twitting-input" placeholder="What's happening?" value={this.state.tweetText} onChange={this.typingHandler}  />
-                    <div id="twitting-toolbar-container">
-                        <div id="twitting-toolbar">
+                <div id="twittingBox">
+                    <input type="text" id="twittingInput" placeholder="What's happening?" value={this.state.tweetText} onChange={this.typingHandler}  />
+                    <div id="twittingToolbarContainer">
+                        <div id="twittingToolbar">
                             <img src="img/open-picture.svg" width="24" height="24" className="colored tool-button" alt="Open pic"/>
                             <img src="img/open-gif.svg" width="24" height="24" className="colored tool-button" alt="Open gif"/>
                             <img src="img/smiley.svg" width="24" height="24" className="colored tool-button" alt="Open smiley"/>
                         </div>
-                        <button id="small-tweet" onClick={this.onTweetClick} disabled={this.state.tweetText.trim().length < 3}>Tweet</button>
+                        <button id="smallTweet" onClick={this.onTweetClick} disabled={this.state.tweetText.trim().length < 3}>Tweet</button>
                     </div>
                 </div>
             </div>

@@ -1,30 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import IconButton from "./IconButton";
 
 class PostContainer extends React.Component {
     render() {
         return (
             <div className="post-container boxy" key={this.props.post.id}>
                 <img src={this.props.post.authorImage} className="profile-pic" width="50" height="50" alt="Pic"/>
-                <article>
+                <article className="post">
                     <h3 className="author">{this.props.post.author}</h3>
                     <p className="post-text">{this.props.post.text}</p>
                     <div className="post-toolbar">
-                        <img src="img/reply.svg" width="18" height="18" alt="Reply"
-                             className="icon-button grey-colored"/>
-                        <img src="img/retweet.svg" width="18" height="18" alt="Retweet"
-                             className="icon-button grey-colored"/>
+                        <IconButton imgPath="img/reply.svg"
+                                    clickHandler={() => {}}
+                                    alt="Reply" />
+                        <IconButton imgPath="img/retweet.svg"
+                                    clickHandler={() => {}}
+                                    alt="Retweet" />
                         {
                             this.props.deleteHandler &&
-                            <img src="img/close.svg" width="18" height="18" alt="Delete"
-                                 className="icon-button grey-colored"
-                                 onClick={() => this.props.deleteHandler(this.props.post.id)}/>
+                            <IconButton imgPath="img/close.svg"
+                                        clickHandler={() => this.props.deleteHandler(this.props.post.id)}
+                                        alt="Delete" />
                         }
                         {
                             this.props.likeHandler &&
-                            <img src={this.props.post.like ? "img/liked.svg" : "img/heart.svg"} width="18" height="18" alt="Like"
-                                 className={"icon-button " + (this.props.post.like ? "red-colored" : "grey-colored")}
-                                 onClick={() => this.props.likeHandler(this.props.post.id)}/>
+                            <IconButton imgPath={this.props.post.like ? "img/liked.svg" : "img/heart.svg"}
+                                        clickHandler={() => this.props.likeHandler(this.props.post.id)}
+                                        colorationClass={this.props.post.like ? "red-colored" : "grey-colored"}
+                                        alt="Like" />
                         }
                     </div>
                 </article>

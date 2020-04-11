@@ -33,18 +33,18 @@ class ProfileEditor extends Component {
 
     render() {
         return (
-            <div id="profile-edit-modal" className="modal">
-                <div id="profile-edit-container">
+            <div id="profileEditModal" className="modal">
+                <div id="profileEditContainer">
                     <div className="modal-top-bar">
                         <img src="img/close.svg" width="22" height="22" alt="Close" className="icon-button colored" onClick={() => this.props.closeHandler(null)}/>
                         <span className="tab-title">Edit profile</span>
-                        <span className="button" onClick={this.handleSave}>Save</span>
+                        <span className="text-button" onClick={this.handleSave}>Save</span>
                     </div>
                     <img src={this.state.profile.background} alt="Background"/>
                     <img src={this.state.profile.imgPath} width="112" height="112" className="profile-face" alt="My Pic"/>
                     <div className="profile-edit-field-container">
                         <label htmlFor="name-field">Name</label>
-                        <input id="name-field" type="text" maxLength="50" className="profile-edit-input"
+                        <input id="nameField" type="text" maxLength="50" className="profile-edit-input"
                                placeholder="Add your name" value={this.state.profile.name} onChange={this.handleNameChange}/>
                         <div className="input-counter">
                             <span className="counter">{this.state.profile.name.length}</span><span>/50</span>
@@ -52,7 +52,7 @@ class ProfileEditor extends Component {
                     </div>
                     <div className="profile-edit-field-container">
                         <label htmlFor="bio-field">Bio</label>
-                        <textarea id="bio-field" maxLength="160" className="profile-edit-input"
+                        <textarea id="bioField" maxLength="160" className="profile-edit-input"
                                   placeholder="Add your bio" value={this.state.profile.bio} onChange={this.handleBioChange} />
                         <div className="input-counter">
                             <span className="counter">{this.state.profile.bio.length}</span><span>/160</span>

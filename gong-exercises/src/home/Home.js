@@ -1,8 +1,10 @@
 import React from 'react';
+import "../sass/home.scss";
 import TabTitleContainer from "./TabTitleContainer";
 import TwittingContainer from "./TwittingContainer";
-import PostContainer from "./PostContainer";
-import Data from "./Data"
+import Data from "../data/Data";
+import Feed from "./Feed";
+
 
 class Home extends React.Component {
     constructor(props) {
@@ -15,7 +17,7 @@ class Home extends React.Component {
         this.setState({posts: posts});
     }
 
-    likeHandler = (id) => {
+    handleLikeClick = (id) => {
         this.setState((state, props) => {
             const i = state.posts.findIndex(p => p.id === id);
             const posts = [...state.posts];
@@ -26,7 +28,7 @@ class Home extends React.Component {
         })
     };
 
-    tweetingHandler = async (tweetText) => {
+    handleTweeting = async (tweetText) => {
         const newPost = await Data.createMyPost(tweetText);
         this.setState((state, props) => {
             const posts = [...state.posts];
@@ -38,25 +40,10 @@ class Home extends React.Component {
 
     render() {
         return (
-            <div id="feed-container">
+            <div id="feedContainer">
                 <TabTitleContainer name="Home"/>
-                <TwittingContainer tweetingHandler={this.tweetingHandler}/>
-                <div id="feed">
-                    {
-                        this.state.posts.length === 0 ?
-                            (
-                                <div id="throbber" className="post-container boxy">
-                                    <article>
-                                        <h3>Loading Tweets...</h3>
-                                    </article>
-                                </div>
-                            ) : (
-                                this.state.posts.map(p => {
-                                    return <PostContainer post={p} likeHandler={this.likeHandler} key={p.id}/>;
-                                })
-                            )
-                    }
-                </div>
+                <TwittingContainer tweetingHandler={this.handleTweeting}/>
+                <Feed posts={this.state.posts} likeHandler={this.handleLikeClick}/>
             </div>
         );
     }

@@ -1,0 +1,43 @@
+@import "variables";
+
+#menuContainer {
+  flex-direction: column;
+  flex-grow: 1;
+
+  #logo {
+    margin-bottom: 1.5em;
+  }
+
+  #menu {
+    padding: unset;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    li {
+      list-style-type: none;
+      margin-bottom: 1em;
+      display: flex;
+      align-items: center;
+      padding: 0.5em 1.5em 0.5em .5em;
+      cursor: pointer;
+
+      .menu-item-text {
+        padding-left: 1.2em;
+        font-size: $larger-font;
+        font-weight: 700;
+
+        @media screen and (max-width: 600px) {
+          display: none;
+        }
+      }
+    }
+
+    li:hover {
+      background-color: $very-light-blue;
+      border-radius: 9999px;
+      //opacity: 0.2;
+      color: $basic-blue;
+    }
+  }
+}

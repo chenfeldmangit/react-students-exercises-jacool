@@ -1,0 +1,92 @@
+@import "variables";
+@import "mixins";
+
+#feedContainer {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+  flex-grow: 2;
+
+  @include grey-borders;
+
+  #tabTitleContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  #twittingContainer {
+    display: flex;
+    flex-direction: row;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+
+    #twittingBox {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 10;
+      padding-left: 1em;
+      padding-right: 1em;
+
+      #twittingInput {
+        border: none;
+        font-size: $larger-font;
+        font-weight: 400;
+        padding-top: 1em;
+        padding-bottom: 1em;
+        outline: none;
+      }
+
+      #twittingToolbarContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        #twittingToolbar {
+          display: flex;
+          flex-direction: row;
+          justify-content: flex-start;
+
+          .tool-button {
+            padding: 0.5em;
+          }
+        }
+
+        #smallTweet {
+          background-color: $very-light-blue;
+          opacity: 0.5;
+          border-radius: 9999px;
+          border: none;
+          outline: none;
+          display: inline-block;
+          color: #999999;
+          font-size: $normal-font;
+          padding: .8em 1.8em;
+          text-decoration: none;
+          font-weight: 700;
+        }
+
+        #smallTweet:enabled {
+          background-color: $basic-blue;
+          color: #ffffff;
+          cursor: pointer;
+        }
+
+        #smallTweet:hover:enabled {
+          opacity: 1;
+        }
+
+        #smallTweet:active:enabled {
+          position: relative;
+          top: 1px;
+        }
+      }
+    }
+  }
+
+}

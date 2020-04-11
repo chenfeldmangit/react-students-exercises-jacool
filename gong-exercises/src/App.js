@@ -1,24 +1,25 @@
 import React from 'react';
 import './App.css';
-import './sass/style.css';
-import Menu from "./Menu";
-import Home from "./Home";
-import TrendsContainer from "./TrendsContainer";
-import Profile from "./Profile";
+import './sass/common.scss';
+import Menu from "./menu/Menu";
+import Home from "./home/Home";
+import TrendsContainer from "./trends/TrendsContainer";
+import Profile from "./profile/Profile";
+import CurrentTab from "./common/CurrentTab";
 
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentTab: App.HOME
+            currentTab: CurrentTab.HOME
         }
     }
 
-    currentTabRender = () => {
+    renderCurrentTab = () => {
         switch (this.state.currentTab) {
-            case App.HOME:
+            case CurrentTab.HOME:
                 return <Home/>;
-            case App.PROFILE:
+            case CurrentTab.PROFILE:
                 return <Profile goBackHandler={this.goBackHandler}/>;
             default:
                 alert(`Unexpected tab name passed "${this.state.currentTab}"`);
@@ -30,7 +31,7 @@ class App extends React.Component {
     };
 
     goBackHandler = () => {
-        this.setState({currentTab: App.HOME});
+        this.setState({currentTab: CurrentTab.HOME});
     };
 
     render() {
@@ -38,15 +39,12 @@ class App extends React.Component {
             <>
                 <Menu menuHandler={this.menuHandler}/>
                 {
-                    this.currentTabRender()
+                    this.renderCurrentTab()
                 }
                 <TrendsContainer/>
             </>
         );
     }
 }
-
-App.HOME = "Home";
-App.PROFILE = "Profile";
 
 export default App;

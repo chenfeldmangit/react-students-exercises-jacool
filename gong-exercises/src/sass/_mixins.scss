@@ -1,0 +1,9 @@
+@import "variables";
+
+@mixin grey-borders {
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-color: $basic-grey;
+}

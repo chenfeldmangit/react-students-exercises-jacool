@@ -1,9 +1,11 @@
 import React from 'react';
-import PostContainer from "./PostContainer";
-import Data from "./Data";
+import "../sass/profile.scss";
+import PostContainer from "../common/PostContainer";
+import Data from "../data/Data";
 import ProfileEditor from "./ProfileEditor";
-import BackNavHeader from "./BackNavHeader";
+import BackNavHeader from "../common/BackNavHeader";
 import PropTypes from "prop-types";
+import Throbber from "../common/Throbber";
 
 class Profile extends React.Component {
     constructor(props) {
@@ -18,7 +20,7 @@ class Profile extends React.Component {
     async componentDidMount() {
         const [profile, posts] = await Promise.all([Data.fetchUserProfile(), Data.getPosts()]);
         const myPosts = posts.filter(p => p.author === profile.name);
-        this.setState({myProfile: profile, myPosts: myPosts});
+        this.setState({myProfile: profile, myPosts});
     }
 
     deleteHandler = (id) => {
@@ -46,43 +48,36 @@ class Profile extends React.Component {
     render() {
         if (this.state.myProfile == null)
             return (
-                <div id="profile-container" className="boxy">
+                <div id="profileContainer" className="boxy">
                     <BackNavHeader text="Loading Profile..." goBackHandler={this.props.goBackHandler}/>
                 </div>
             );
         else
             return (
-                <div id="profile-container" className="boxy">
+                <div id="profileContainer" className="boxy">
                     <BackNavHeader text={this.state.myProfile.name} goBackHandler={this.props.goBackHandler}/>
                     <img src={this.state.myProfile.background} alt="Background"/>
-                    <div id="profile-details">
-                        <div id="profile-pic-bar">
+                    <div id="profileDetails">
+                        <div id="profilePicBar">
                             <img src={this.state.myProfile.imgPath} width="134" height="134" className="profile-face" alt="My Face"/>
-                            <span onClick={this.editHandler} className="button">Edit profile</span>
+                            <span onClick={this.editHandler} className="text-button">Edit profile</span>
                         </div>
-                        <div id="profile-data-bar">
-                            <h2 className="tab-title" id="profile-name">{this.state.myProfile.name}</h2>
-                            <h3 className="small-text" id="profile-handle">{this.state.myProfile.handle}</h3>
-                            <p className="post-text" id="profile-bio">{this.state.myProfile.bio}</p>
+                        <div id="profileDataBar">
+                            <h2 className="tab-title" id="profileName">{this.state.myProfile.name}</h2>
+                            <h3 className="small-text" id="profileHandle">{this.state.myProfile.handle}</h3>
+                            <p className="post-text" id="profileBio">{this.state.myProfile.bio}</p>
                         </div>
                     </div>
-                    <div id="my-tweets-container">
+                    <div id="myTweetsContainer">
                         <div className="inner-tab-name">
                             Tweets
                         </div>
-                        <div id="my-tweets">
+                        <div id="myTweets">
                             {
-                                this.state.myPosts.length === 0 ?
-                                    (
-                                        <div id="throbber" className="post-container boxy">
-                                            <article>
-                                                <h3>Loading Tweets...</h3>
-                                            </article>
-                                        </div>
-                                    ) : (
-                                        this.state.myPosts.map(p =>
-                                            <PostContainer post={p} deleteHandler={this.deleteHandler} key={p.id}/>)
-                                    )
+                                this.state.myPosts.length === 0 ? <Throbber/> : (
+                                    this.state.myPosts.map(p =>
+                                        <PostContainer post={p} deleteHandler={this.deleteHandler} key={p.id}/>)
+                                )
                             }
                         </div>
                     </div>
