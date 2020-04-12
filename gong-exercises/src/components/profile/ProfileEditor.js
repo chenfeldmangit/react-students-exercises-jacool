@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
+import close_img from "../../img/close.svg";
 
 class ProfileEditor extends Component {
     constructor(props) {
@@ -36,7 +37,7 @@ class ProfileEditor extends Component {
             <div id="profileEditModal" className="modal">
                 <div id="profileEditContainer">
                     <div className="modal-top-bar">
-                        <img src="img/close.svg" width="22" height="22" alt="Close" className="icon-button colored" onClick={() => this.props.closeHandler(null)}/>
+                        <img src={close_img} width="22" height="22" alt="Close" className="icon-button colored" onClick={() => this.props.closeHandler(null)}/>
                         <span className="tab-title">Edit profile</span>
                         <span className="text-button" onClick={this.handleSave}>Save</span>
                     </div>

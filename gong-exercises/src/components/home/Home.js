@@ -1,8 +1,8 @@
 import React from 'react';
-import "../sass/home.scss";
+import "../../sass/home.scss";
 import TabTitleContainer from "./TabTitleContainer";
 import TwittingContainer from "./TwittingContainer";
-import Data from "../data/Data";
+import Data from "../../data/Data";
 import Feed from "./Feed";
 
 

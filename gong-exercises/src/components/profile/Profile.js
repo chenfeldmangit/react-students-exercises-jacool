@@ -1,7 +1,7 @@
 import React from 'react';
-import "../sass/profile.scss";
+import "../../sass/profile.scss";
 import PostContainer from "../common/PostContainer";
-import Data from "../data/Data";
+import Data from "../../data/Data";
 import ProfileEditor from "./ProfileEditor";
 import BackNavHeader from "../common/BackNavHeader";
 import PropTypes from "prop-types";

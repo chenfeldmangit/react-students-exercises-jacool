@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
 import './sass/common.scss';
-import Menu from "./menu/Menu";
-import Home from "./home/Home";
-import TrendsContainer from "./trends/TrendsContainer";
-import Profile from "./profile/Profile";
-import CurrentTab from "./common/CurrentTab";
+import Menu from "./components/menu/Menu";
+import Home from "./components/home/Home";
+import TrendsContainer from "./components/trends/TrendsContainer";
+import Profile from "./components/profile/Profile";
+import CurrentTab from "./components/common/CurrentTab";
 
 class App extends React.Component {
     constructor(props) {

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import mySvg from './img/home.svg';
 
 class MenuItem extends React.Component {
     render() {
