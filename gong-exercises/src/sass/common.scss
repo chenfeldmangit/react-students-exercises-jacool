@@ -1,4 +1,5 @@
 @import "variables";
+@import "mixins";
 
 #root {
   display: flex;
@@ -12,7 +13,7 @@
 }
 
 .profile-pic {
-  border-radius: 9999px;
+  border-radius: $rounded-sides;
 }
 
 .colored {
@@ -44,31 +45,52 @@
   border-color: $basic-grey;
 }
 
-.text-button {
-  background-color: white;
-  border-radius: 9999px;
+.text-button-framed {
+  @include text-button-base;
+  background-color: $background-grey;
   border: 1px solid;
-  cursor: pointer;
-  color: $basic-blue;
-  font-size: $normal-font;
-  padding: .8em 1.8em;
-  text-decoration: none;
-  font-weight: 700;
-  margin: 1em;
 }
 
-.text-button:hover {
+.text-button-framed:enabled {
+  background-color: white;
+  color: $basic-blue;
+  cursor: pointer;
+}
+
+.text-button-framed:hover:enabled {
   background-color: $very-light-blue;
 }
 
-.text-button:active {
+.text-button-framed:active:enabled {
+  position: relative;
+  top: 1px;
+}
+
+.text-button-solid {
+  @include text-button-base;
+  opacity: 0.5;
+  background-color: $very-light-blue;
+  border: none;
+}
+
+.text-button-solid:enabled {
+  background-color: $basic-blue;
+  color: white;
+  cursor: pointer;
+}
+
+.text-button-solid:hover:enabled {
+  opacity: 1;
+}
+
+.text-button-solid:active:enabled {
   position: relative;
   top: 1px;
 }
 
 .icon-button {
   background-color: rgba(0, 0, 0, 0);
-  border-radius: 9999px;
+  border-radius: $rounded-sides;
   border-style: none;
   cursor: pointer;
   padding: 8px 8px;
@@ -122,7 +144,7 @@
   padding: 1em 1em 0 1em;
 
   .post-face {
-    border-radius: 9999px;
+    border-radius: $rounded-sides;
     padding: 1em;
   }
 

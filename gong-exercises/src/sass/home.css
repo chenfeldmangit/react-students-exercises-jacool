@@ -38,14 +38,15 @@
   border: none;
   font-size: 1.3em;
   font-weight: 400;
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding-top: 0.8em;
+  padding-bottom: 0;
   outline: none;
 }
 #feedContainer #twittingContainer #twittingBox #twittingToolbarContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 }
 #feedContainer #twittingContainer #twittingBox #twittingToolbarContainer #twittingToolbar {
   display: flex;
@@ -54,31 +55,6 @@
 }
 #feedContainer #twittingContainer #twittingBox #twittingToolbarContainer #twittingToolbar .tool-button {
   padding: 0.5em;
-}
-#feedContainer #twittingContainer #twittingBox #twittingToolbarContainer #smallTweet {
-  background-color: #e8f5fe;
-  opacity: 0.5;
-  border-radius: 9999px;
-  border: none;
-  outline: none;
-  display: inline-block;
-  color: #999999;
-  font-size: 1em;
-  padding: 0.8em 1.8em;
-  text-decoration: none;
-  font-weight: 700;
-}
-#feedContainer #twittingContainer #twittingBox #twittingToolbarContainer #smallTweet:enabled {
-  background-color: #1da1f2;
-  color: #ffffff;
-  cursor: pointer;
-}
-#feedContainer #twittingContainer #twittingBox #twittingToolbarContainer #smallTweet:hover:enabled {
-  opacity: 1;
-}
-#feedContainer #twittingContainer #twittingBox #twittingToolbarContainer #smallTweet:active:enabled {
-  position: relative;
-  top: 1px;
 }
 
 /*# sourceMappingURL=home.css.map */

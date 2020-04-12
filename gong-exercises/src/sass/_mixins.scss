@@ -7,3 +7,14 @@
   border-right-width: 1px;
   border-color: $basic-grey;
 }
+
+@mixin text-button-base {
+  border-radius: $rounded-sides;
+  outline: none;
+  color: $darker-grey;
+  font-size: $normal-font;
+  padding: .8em 1.8em;
+  text-decoration: none;
+  font-weight: 700;
+  margin: 1em;
+}

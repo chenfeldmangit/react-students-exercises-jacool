@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import EditField from "../common/EditField";
 
 import close_img from "../../img/close.svg";
+import TextButton from "../common/TextButton";
 
 class ProfileEditor extends Component {
     constructor(props) {
@@ -33,7 +34,7 @@ class ProfileEditor extends Component {
                         <img src={close_img} width="22" height="22" alt="Close" className="icon-button colored"
                              onClick={() => this.props.closeHandler(null)}/>
                         <span className="tab-title">Edit profile</span>
-                        <span className="text-button" onClick={this.handleSave}>Save</span>
+                        <TextButton text="Save" onClick={this.handleSave} />
                     </div>
                     <img src={this.state.profile.background} alt="Background"/>
                     <img src={this.state.profile.imgPath} width="112" height="112" className="profile-face"

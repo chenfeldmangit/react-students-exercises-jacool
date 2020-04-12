@@ -10,7 +10,7 @@
     flex-direction: row;
     align-items: center;
     background-color: $background-grey;
-    border-radius: 9999px;
+    border-radius: $rounded-sides;
     height: 3em;
   }
 }

@@ -13,3 +13,5 @@ $counter-grey-filter: invert(50%) sepia(9%) saturate(853%) hue-rotate(165deg) br
 
 $larger-font: 1.3em;
 $normal-font: 1em;
+
+$rounded-sides: 9999px; // a trick allowing rounded sides no matter what is the height of the element

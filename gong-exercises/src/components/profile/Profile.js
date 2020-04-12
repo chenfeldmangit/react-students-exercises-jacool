@@ -6,6 +6,7 @@ import ProfileEditor from "./ProfileEditor";
 import BackNavHeader from "../common/BackNavHeader";
 import PropTypes from "prop-types";
 import Throbber from "../common/Throbber";
+import TextButton from "../common/TextButton";
 
 class Profile extends React.Component {
     constructor(props) {
@@ -60,7 +61,7 @@ class Profile extends React.Component {
                     <div id="profileDetails">
                         <div id="profilePicBar">
                             <img src={this.state.myProfile.imgPath} width="134" height="134" className="profile-face" alt="My Face"/>
-                            <span onClick={this.editHandler} className="text-button">Edit profile</span>
+                            <TextButton text="Edit profile" onClick={this.editHandler} />
                         </div>
                         <div id="profileDataBar">
                             <h2 className="tab-title" id="profileName">{this.state.myProfile.name}</h2>

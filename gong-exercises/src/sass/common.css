@@ -1,4 +1,5 @@
 /* $basic-blue = #1da1f2 */
+/* $basic-blue = #1da1f2 */
 #root {
   display: flex;
   flex-direction: row;
@@ -42,24 +43,59 @@
   border-color: #e6ecf0;
 }
 
-.text-button {
-  background-color: white;
+.text-button-framed {
   border-radius: 9999px;
-  border: 1px solid;
-  cursor: pointer;
-  color: #1da1f2;
+  outline: none;
+  color: darkgray;
   font-size: 1em;
   padding: 0.8em 1.8em;
   text-decoration: none;
   font-weight: 700;
   margin: 1em;
+  background-color: #f5f8fa;
+  border: 1px solid;
 }
 
-.text-button:hover {
+.text-button-framed:enabled {
+  background-color: white;
+  color: #1da1f2;
+  cursor: pointer;
+}
+
+.text-button-framed:hover:enabled {
   background-color: #e8f5fe;
 }
 
-.text-button:active {
+.text-button-framed:active:enabled {
+  position: relative;
+  top: 1px;
+}
+
+.text-button-solid {
+  border-radius: 9999px;
+  outline: none;
+  color: darkgray;
+  font-size: 1em;
+  padding: 0.8em 1.8em;
+  text-decoration: none;
+  font-weight: 700;
+  margin: 1em;
+  opacity: 0.5;
+  background-color: #e8f5fe;
+  border: none;
+}
+
+.text-button-solid:enabled {
+  background-color: #1da1f2;
+  color: white;
+  cursor: pointer;
+}
+
+.text-button-solid:hover:enabled {
+  opacity: 1;
+}
+
+.text-button-solid:active:enabled {
   position: relative;
   top: 1px;
 }
