@@ -8,39 +8,37 @@ import liked_img from "../../img/liked.svg";
 import heart_img from "../../img/heart.svg";
 import retweet_img from "../../img/retweet.svg";
 
-class PostContainer extends React.Component {
-    render() {
-        return (
-            <div className="post-container boxy" key={this.props.post.id}>
-                <img src={this.props.post.authorImage} className="profile-pic" width="50" height="50" alt="Pic"/>
-                <article className="post">
-                    <h3 className="author">{this.props.post.author}</h3>
-                    <p className="post-text">{this.props.post.text}</p>
-                    <div className="post-toolbar">
-                        <IconButton imgPath={reply_img}
-                                    clickHandler={() => {}}
-                                    alt="Reply" />
-                        <IconButton imgPath={retweet_img}
-                                    clickHandler={() => {}}
-                                    alt="Retweet" />
-                        {
-                            this.props.deleteHandler &&
-                            <IconButton imgPath={close_x_img}
-                                        clickHandler={() => this.props.deleteHandler(this.props.post.id)}
-                                        alt="Delete" />
-                        }
-                        {
-                            this.props.likeHandler &&
-                            <IconButton imgPath={this.props.post.like ? liked_img : heart_img}
-                                        clickHandler={() => this.props.likeHandler(this.props.post.id)}
-                                        colorationClass={this.props.post.like ? "red-colored" : "grey-colored"}
-                                        alt="Like" />
-                        }
-                    </div>
-                </article>
-            </div>
-        );
-    }
+export default function PostContainer(props) {
+    return (
+        <div className="post-container boxy" key={props.post.id}>
+            <img src={props.post.authorImage} className="profile-pic" width="50" height="50" alt="Pic"/>
+            <article className="post">
+                <h3 className="author">{props.post.author}</h3>
+                <p className="post-text">{props.post.text}</p>
+                <div className="post-toolbar">
+                    <IconButton imgPath={reply_img}
+                                clickHandler={() => {}}
+                                alt="Reply" />
+                    <IconButton imgPath={retweet_img}
+                                clickHandler={() => {}}
+                                alt="Retweet" />
+                    {
+                        props.deleteHandler &&
+                        <IconButton imgPath={close_x_img}
+                                    clickHandler={() => props.deleteHandler(props.post.id)}
+                                    alt="Delete" />
+                    }
+                    {
+                        props.likeHandler &&
+                        <IconButton imgPath={props.post.like ? liked_img : heart_img}
+                                    clickHandler={() => props.likeHandler(props.post.id)}
+                                    colorationClass={props.post.like ? "red-colored" : "grey-colored"}
+                                    alt="Like" />
+                    }
+                </div>
+            </article>
+        </div>
+    );
 }
 
 const postType = PropTypes.shape({
@@ -56,5 +54,3 @@ PostContainer.propTypes = {
     likeHandler: PropTypes.func,
     deleteHandler: PropTypes.func
 };
-
-export default PostContainer;

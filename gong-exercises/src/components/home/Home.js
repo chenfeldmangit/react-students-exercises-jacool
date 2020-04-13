@@ -1,53 +1,41 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import "../../sass/home.scss";
 import TabTitleContainer from "./TabTitleContainer";
 import TwittingContainer from "./TwittingContainer";
 import Data from "../../data/Data";
 import Feed from "./Feed";
 
+export default function Home(props) {
+    const [posts, setPosts] = useState([]);
 
-class Home extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {posts: []};
-    }
+    useEffect(() => {
+        async function fetchData() {
+            setPosts(await Data.getPosts());
+        }
+        fetchData();
+    }, []);
 
-    async componentDidMount() {
-        const posts = await Data.getPosts();
-        this.setState({posts: posts});
-    }
-
-    handleLikeClick = (id) => {
-        this.setState((state, props) => {
-            const i = state.posts.findIndex(p => p.id === id);
-            const posts = [...state.posts];
-            const post = {...posts[i]};
-            post.like = !post.like;
-            posts[i] = post;
-            return {posts: posts};
-        })
+    const handleLikeClick = (id) => {
+        const i = posts.findIndex(p => p.id === id);
+        const post = posts[i];
+        const posts_clone = [...posts];
+        posts_clone[i] = {...post, like: !post.like};
+        setPosts(posts_clone);
     };
 
-    handleTweeting = async (tweetText) => {
+    const handleTweeting = async (tweetText) => {
         const newPost = await Data.createMyPost(tweetText);
-        this.setState((state, props) => {
-            const posts = [...state.posts];
-            posts.unshift(newPost);
-            return {posts};
-        });
+        const posts_clone = [...posts];
+        posts_clone.unshift(newPost);
+        setPosts(posts_clone);
         Data.addNewPost(newPost);
     };
 
-    render() {
-        return (
-            <div id="feedContainer">
-                <TabTitleContainer name="Home"/>
-                <TwittingContainer tweetingHandler={this.handleTweeting}/>
-                <Feed posts={this.state.posts} likeHandler={this.handleLikeClick}/>
-            </div>
-        );
-    }
+    return (
+        <div id="feedContainer">
+            <TabTitleContainer name="Home"/>
+            <TwittingContainer tweetingHandler={handleTweeting}/>
+            <Feed posts={posts} likeHandler={handleLikeClick}/>
+        </div>
+    );
 }
-
-export default Home;
-

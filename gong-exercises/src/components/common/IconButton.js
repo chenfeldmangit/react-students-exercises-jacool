@@ -1,13 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-class IconButton extends React.Component {
-    render() {
-        return <img src={this.props.imgPath} width="18" height="18"
-                    className={"icon-button " + this.props.colorationClass}
-                    onClick={this.props.clickHandler}
-                    alt={this.props.alt}/>;
-    }
+export default function IconButton(props) {
+    return <img src={props.imgPath} width="18" height="18"
+                className={"icon-button " + props.colorationClass}
+                onClick={props.clickHandler}
+                alt={props.alt}/>;
 }
 
 IconButton.defaultProps = {
@@ -21,5 +19,3 @@ IconButton.propTypes = {
     colorationClass: PropTypes.string,
     alt: PropTypes.string
 };
-
-export default IconButton;
