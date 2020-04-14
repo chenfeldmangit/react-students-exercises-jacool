@@ -4,13 +4,13 @@ import {Link} from "react-router-dom";
 
 export default function MenuItem(props) {
     return (
-        <Link to={props.route}>
-            <li>
+        <li className="menu-item">
+            <Link to={props.route} className="menu-item-link">
                 <img src={props.path} alt={props.text} width="25" height="25"
                      className={props.path.endsWith("jpeg") ? "profile-pic" : ""}/>
                 <span className="menu-item-text">{props.text}</span>
-            </li>
-        </Link>
+            </Link>
+        </li>
     );
 }
 
