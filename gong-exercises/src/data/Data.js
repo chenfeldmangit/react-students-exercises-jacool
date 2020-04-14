@@ -43,6 +43,10 @@ class Data {
     static storeProfile(profile) {
         Local.storeProfile(profile);
     }
+
+    static async fetchMentions() {
+        return Object.freeze(await Local.fetchMentions(Data.exampleMentions));
+    }
 }
 
 export default Data;
@@ -83,6 +87,11 @@ Data.examplePosts = [
         authorImage: jacob_img,
         like: false
     }
+];
+
+Data.exampleMentions = [
+    {id: "1214342", category: "like", author: "Eilon Reshef", text: "very good", authorImage: eilon_img},
+    {id: "12143562", category: "follow", author: "Bill Gates", text: "really nice", authorImage: bill_img}
 ];
 
 

@@ -37,6 +37,28 @@
   flex-grow: 2;
 }
 
+#tabTitleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 3em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.middle-column-container {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 50%;
+  flex-grow: 2;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-color: #e6ecf0;
+}
+
 .boxy {
   border-bottom-style: solid;
   border-bottom-width: 1px;

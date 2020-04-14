@@ -1,0 +1,10 @@
+/* $basic-blue = #1da1f2 */
+/* $basic-blue = #1da1f2 */
+#notificationsTabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/*# sourceMappingURL=notifications.css.map */

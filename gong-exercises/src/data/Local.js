@@ -53,8 +53,13 @@ class Local {
             console.log("Error reading key", e);
         }
     }
+
+    static async fetchMentions(exampleMentions) {
+        return Local.readKey(Local.MENTIONS_KEY, exampleMentions);
+    }
 }
 Local.POSTS_KEY = "tweets";
 Local.PROFILE_KEY = "profile";
+Local.MENTIONS_KEY = "mentions";
 
 export default Local;

@@ -2,23 +2,6 @@
 @import "mixins";
 
 #feedContainer {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 50%;
-  flex-grow: 2;
-
-  @include grey-borders;
-
-  #tabTitleContainer {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    height: 3em;
-    padding-left: 1em;
-    padding-right: 1em;
-  }
-
   #twittingContainer {
     display: flex;
     flex-direction: row;

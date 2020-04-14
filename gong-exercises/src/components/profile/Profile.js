@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from "prop-types";
+
 import "../../sass/profile.scss";
+
 import PostContainer from "../common/PostContainer";
 import Data from "../../data/Data";
 import ProfileEditor from "./ProfileEditor";
 import BackNavHeader from "../common/BackNavHeader";
-import PropTypes from "prop-types";
 import Throbber from "../common/Throbber";
 import TextButton from "../common/TextButton";
 
@@ -90,9 +92,5 @@ class Profile extends React.Component {
             );
     }
 }
-
-Profile.propTypes = {
-    goBackHandler: PropTypes.func.isRequired
-};
 
 export default Profile;

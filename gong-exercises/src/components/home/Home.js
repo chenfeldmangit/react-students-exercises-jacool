@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import "../../sass/home.scss";
-import TabTitleContainer from "./TabTitleContainer";
+import TabTitleContainer from "../common/TabTitleContainer";
 import TwittingContainer from "./TwittingContainer";
 import Data from "../../data/Data";
 import Feed from "./Feed";
 
-export default function Home(props) {
+export default function Home() {
     const [posts, setPosts] = useState([]);
 
     useEffect(() => {
@@ -32,7 +32,7 @@ export default function Home(props) {
     };
 
     return (
-        <div id="feedContainer">
+        <div id="feedContainer" className="middle-column-container">
             <TabTitleContainer name="Home"/>
             <TwittingContainer tweetingHandler={handleTweeting}/>
             <Feed posts={posts} likeHandler={handleLikeClick}/>

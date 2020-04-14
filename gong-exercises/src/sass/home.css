@@ -1,25 +1,5 @@
 /* $basic-blue = #1da1f2 */
 /* $basic-blue = #1da1f2 */
-#feedContainer {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 50%;
-  flex-grow: 2;
-  border-left-style: solid;
-  border-left-width: 1px;
-  border-right-style: solid;
-  border-right-width: 1px;
-  border-color: #e6ecf0;
-}
-#feedContainer #tabTitleContainer {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  height: 3em;
-  padding-left: 1em;
-  padding-right: 1em;
-}
 #feedContainer #twittingContainer {
   display: flex;
   flex-direction: row;
