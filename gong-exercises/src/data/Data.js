@@ -14,7 +14,7 @@ class Data {
     static async createMyPost(tweetText) {
         const me = await Data.fetchUserProfile();
         return {
-            id: (Math.round(Math.random()*1000000000000000)).toString(),
+            id: (Math.round(Math.random() * 1000000000000000)).toString(),
             author: me.name,
             text: tweetText,
             authorImage: me.imgPath,
@@ -90,8 +90,20 @@ Data.examplePosts = [
 ];
 
 Data.exampleMentions = [
-    {id: "1214342", category: "like", author: "Eilon Reshef", text: "very good", authorImage: eilon_img},
-    {id: "12143562", category: "follow", author: "Bill Gates", text: "really nice", authorImage: bill_img}
+    {
+        id: "1214342",
+        category: "like",
+        author: "Eilon Reshef",
+        text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+        authorImage: eilon_img
+    },
+    {
+        id: "12143562",
+        category: "follow",
+        author: "Bill Gates",
+        text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC",
+        authorImage: bill_img
+    }
 ];
 
 

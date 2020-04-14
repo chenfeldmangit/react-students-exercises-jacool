@@ -6,16 +6,15 @@ import person_img from "../../img/notification-person.svg";
 
 export default function Notification(props) {
     return (
-        <div>
-            <img src={props.content.category === "like" ? heart_img : person_img} width="50" height="50"/>
-            <span>
-                <img src={props.content.authorImage} className="profile-pic" width="50" height="50"/>
-                <div>{props.content.author}</div>
-                <div>{props.content.text}</div>
+        <div className="notification">
+            <img className="category-icon" src={props.content.category === "like" ? heart_img : person_img} alt=""/>
+            <span className="notification-content">
+                <img src={props.content.authorImage} className="small-profile-pic" alt=""/>
+                <div className="content-head"><b>{props.content.author}</b> {props.content.category === "like" ? "liked your reply" : "followed you"}</div>
+                <div className="content-text">{props.content.text}</div>
             </span>
         </div>
     )
-
 }
 
 const notificationType = PropTypes.shape({
