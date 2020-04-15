@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from "react-router-dom";
 
 import "../../sass/profile.scss";
 
@@ -51,13 +52,13 @@ class Profile extends React.Component {
         if (this.state.myProfile == null)
             return (
                 <div id="profileContainer" className="boxy">
-                    <BackNavHeader text="Loading Profile..." goBackHandler={this.props.goBackHandler}/>
+                    <BackNavHeader text="Loading Profile..." goBackHandler={this.props.history.goBack}/>
                 </div>
             );
         else
             return (
                 <div id="profileContainer" className="boxy">
-                    <BackNavHeader text={this.state.myProfile.name} goBackHandler={this.props.goBackHandler}/>
+                    <BackNavHeader text={this.state.myProfile.name} goBackHandler={this.props.history.goBack}/>
                     <img src={this.state.myProfile.background} alt="Background"/>
                     <div id="profileDetails">
                         <div id="profilePicBar">
@@ -92,4 +93,4 @@ class Profile extends React.Component {
     }
 }
 
-export default Profile;
+export default withRouter(Profile);
