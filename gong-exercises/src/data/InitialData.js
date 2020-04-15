@@ -1,57 +1,23 @@
-import Local from "./Local";
-
 import profile_back_img from "../img/profile-back.jfif";
 import eilon_img from "../img/eilon.jfif";
 import chen_img from "../img/chen.jfif";
 import jacob_img from "../img/jacob.jpeg";
 import bill_img from "../img/bill.jpg";
 
-class Data {
-    static async getPosts() {
-        return Object.freeze(await Local.readPosts(Data.examplePosts));
-    }
-
-    static async createMyPost(tweetText) {
-        const me = await Data.fetchUserProfile();
-        return {
-            id: (Math.round(Math.random() * 1000000000000000)).toString(),
-            author: me.name,
-            text: tweetText,
-            authorImage: me.imgPath,
-            like: false
-        };
-    }
-
-    static addNewPost(post) {
-        Local.addPostToLocal(post);
-    }
-
-    static removePost(uid) {
-        Local.removePostFromLocal(uid);
-    }
-
-    static async fetchUserProfile() {
-        return await Local.fetchUserProfile({
-            name: "Jacob Eckel",
-            handle: "@eckely",
-            bio: "Software developer since the last century",
-            imgPath: jacob_img,
-            background: profile_back_img
-        });
-    }
-
-    static storeProfile(profile) {
-        Local.storeProfile(profile);
-    }
-
-    static async fetchMentions() {
-        return Object.freeze(await Local.fetchMentions(Data.exampleMentions));
-    }
+class InitialData {
 }
 
-export default Data;
+export default InitialData;
 
-Data.examplePosts = [
+InitialData.profile = {
+    name: "Jacob Eckel",
+    handle: "@eckely",
+    bio: "Software developer since the last century",
+    imgPath: jacob_img,
+    background: profile_back_img
+};
+
+InitialData.posts = [
     {
         id: "56756733",
         author: "Chen Feldman",
@@ -89,7 +55,7 @@ Data.examplePosts = [
     }
 ];
 
-Data.exampleMentions = [
+InitialData.mentions = [
     {
         id: "1214342",
         category: "like",

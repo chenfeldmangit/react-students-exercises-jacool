@@ -6,7 +6,7 @@ import Throbber from "../common/Throbber";
 export default function Feed(props) {
     return <div id="feed">
         {
-            props.posts.length === 0 ? <Throbber/> : (
+            props.posts.length === 0 ? <Throbber text="Loading tweets..."/> : (
                 props.posts.map(p => {
                     return <PostContainer post={p} likeHandler={props.likeHandler} key={p.id}/>;
                 })

@@ -3,6 +3,12 @@ import "../../sass/trends.scss";
 import search_img from "../../img/search.svg";
 
 class TrendsContainer extends React.Component {
+
+    // static async search(text) {
+    //     const posts = await LocalKeys.readPosts();
+    //     return posts.filter(value => value.text.includes(text));
+    // }
+
     render() {
         return (
             <div id="suggestionsContainer">

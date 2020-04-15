@@ -1,24 +1,20 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import Notification from "./Notification";
-import Data from "../../data/Data";
+import InitialData from "../../data/InitialData";
+import LocalKeys from "../../data/LocalKeys"
+import useLocalStorage from "../../data/useLocalStorage";
+import Throbber from "../common/Throbber";
+
 
 export default function NotificationsFeed() {
-    const [notifications, setNotifications] = useState([]);
-
-    useEffect(() => {
-        async function fetch() {
-            setNotifications(await Data.fetchMentions());
-        }
-
-        fetch();
-    }, []);
+    const [notifications] = useLocalStorage(LocalKeys.MENTIONS_KEY, [], InitialData.mentions);
 
     return (
         <div>
             {
-                notifications.map(n =>
-                    <Notification content={n} key={n.id}/>
-                )
+                notifications.length === 0
+                    ? <Throbber text="Loading notifications..."/>
+                    : notifications.map(n => <Notification content={n} key={n.id}/>)
             }
         </div>
     )
