@@ -1,7 +1,7 @@
 class Routs {
 }
 
-Routs.HOME = "/home";
+Routs.HOME = "/";
 Routs.NOTIFICATIONS = "/notifications";
 Routs.PROFILE = "/profile";
 

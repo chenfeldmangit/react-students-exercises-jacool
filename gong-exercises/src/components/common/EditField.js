@@ -8,7 +8,7 @@ export default function EditField(props) {
     };
 
     return (
-        <div className="profile-edit-field-container">
+        <div className="edit-field-container">
             <label htmlFor={"editField" + props.fieldName}>{props.fieldNameDisplay}</label>
             <props.fieldType
                 id={"editField" + props.fieldName}
@@ -26,6 +26,7 @@ export default function EditField(props) {
 
 EditField.defaultProps = {
     fieldType: "input",
+    value: "",
 };
 
 EditField.propTypes = {

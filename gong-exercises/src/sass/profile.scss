@@ -46,44 +46,5 @@
     border: 1px solid #888;
     border-radius: 14px;
     max-height: 90vh;
-
-    .profile-edit-field-container {
-      display: flex;
-      flex-direction: column;
-      align-items: stretch;
-      background-color: $background-grey;
-
-      width: 100%;
-      margin-top: 1em;
-
-      .profile-edit-input {
-        border: none;
-        font-size: $larger-font;
-        font-weight: 400;
-        font-style: normal;
-        font-family: inherit;
-        color: $very-dark-grey;
-
-        background-color: transparent;
-        border-bottom-style: solid;
-        border-bottom-color: $darker-grey;
-        border-bottom-width: 2px;
-      }
-
-      .profile-edit-input:focus {
-        outline: none;
-        border-bottom-color: $basic-blue;
-      }
-
-      .input-counter {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        color: $counter-grey;
-        padding-right: 10px;
-        padding-top: 5px;
-        background-color: white;
-      }
-    }
   }
 }
