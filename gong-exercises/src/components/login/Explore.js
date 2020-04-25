@@ -1,21 +1,24 @@
 import React from "react";
-import { connect } from 'react-redux';
+import PropTypes from "prop-types";
+import useLocalStorage from "../../data/useLocalStorage";
+import LocalKeys from "../../data/LocalKeys";
+import TextButton from "../common/TextButton";
 
 const Explore = (props) => {
+    const [userCredentials] = useLocalStorage(LocalKeys.USER, null, null);
+
     return (
         <div>
-            <button onClick={() => props.onSelect("SIGNUP")}>Sign up</button>
-            <button onClick={() => props.onSelect("LOGIN")}>Log in</button>
+            <TextButton text="Sign Up" onClick={() => props.onSelect("SIGNUP")} />
+            <TextButton text="Log in" disabled={userCredentials == null} onClick={() => props.onSelect("LOGIN")} />
         </div>
     );
 };
 
-const mapStateToProps = (store) => {
-    return {
-        user: store.user
-    }
+Explore.propTypes = {
+    onSelect: PropTypes.func.isRequired
 };
 
-export default connect(mapStateToProps)(Explore);
+export default Explore;
 
 

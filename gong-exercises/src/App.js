@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 
@@ -14,22 +14,29 @@ import Notifications from "./components/notifications/Notifications";
 import Explore from "./components/login/Explore";
 import Login from "./components/login/Login";
 import SignUp from "./components/login/SignUp";
+import UserActions from "./actions/UserActions";
 
 const App = (props) => {
     const [page, setPage] = useState("EXPLORE");
 
+    function userManagement() {
+        switch (page) {
+            case "EXPLORE":
+                return <Explore onSelect={(selection) => {setPage(selection)}}/>;
+            case "LOGIN":
+                return <Login/>;
+            case "SIGNUP":
+                return <SignUp/>;
+            default:
+                alert("Error");
+        }
+    }
+
     return (
-        props.user.loggedInUser == null
-            ? (page === "EXPLORE" ?
-                <Explore onSelect={(selection) => {
-                    setPage(selection)
-                }}/>
-                : (page === "LOGIN" ? <Login/> : <SignUp/>)
-            )
-            :
+        props.user.loggedInUser == null ? userManagement() :
             (
                 <BrowserRouter>
-                    <Menu/>
+                    <Menu onLogout = { () => { props.logout(); setPage("EXPLORE"); } } />
                     <Switch>
                         <Route path={Routs.HOME} component={Home} exact/>
                         <Route path={Routs.NOTIFICATIONS} component={Notifications}/>
@@ -47,4 +54,12 @@ const mapStateToProps = (store) => {
     }
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => {
+            dispatch(UserActions.logout())
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
