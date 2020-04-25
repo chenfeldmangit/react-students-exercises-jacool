@@ -14,7 +14,7 @@ export default function useLocalStorage(key, uninitializedValue, initialValue) {
                 setValue(initialValue);
             }
         })();
-    });
+    }, [initialValue, key]);
 
     const store = async valueToStore => {
         try {

@@ -11,22 +11,19 @@ import Throbber from "../common/Throbber";
 import TextButton from "../common/TextButton";
 import useLocalStorage from "../../data/useLocalStorage";
 import LocalKeys from "../../data/LocalKeys";
+import PostsActions from "../../actions/PostsActions";
+import {connect} from "react-redux";
 
-function Profile(props) {
-    const calcMyPosts = () => posts.filter(p => p.author === myProfile.name);
+const Profile = (props) => {
+    const calcMyPosts = () => myProfile == null ? null : props.posts.filter(p => p.author === myProfile.name);
 
     const [myProfile, setMyProfile] = useLocalStorage(LocalKeys.PROFILE_KEY, null, InitialData.profile);
-    const [posts, setPosts] = useLocalStorage(LocalKeys.POSTS_KEY, [], InitialData.posts);
     const [myPosts, setMyPosts] = useState(calcMyPosts());
     const [showEdit, setShowEdit] = useState(false);
 
     useEffect(() => {
         setMyPosts(calcMyPosts());
-    }, [posts, myProfile]);
-
-    const deleteHandler = (id) => {
-        setPosts(posts.filter(p => p.id !== id));
-    };
+    }, [props.posts, myProfile]);
 
     const editHandler = () => {
         setShowEdit(true);
@@ -61,14 +58,12 @@ function Profile(props) {
                     </div>
                 </div>
                 <div id="myTweetsContainer">
-                    <div className="inner-tab-name">
-                        Tweets
-                    </div>
+                    <div className="inner-tab-name">Tweets</div>
                     <div id="myTweets">
                         {
-                            myPosts.length === 0 ? <Throbber text="Loading my posts..."/> : (
+                            myPosts == null ? <Throbber text="Loading my posts..."/> : (
                                 myPosts.map(p =>
-                                    <PostContainer post={p} deleteHandler={deleteHandler} key={p.id}/>)
+                                    <PostContainer post={p} deleteHandler={(id) => props.removePost(id)} key={p.id}/>)
                             )
                         }
                     </div>
@@ -79,6 +74,20 @@ function Profile(props) {
                 }
             </div>
         );
-}
+};
 
-export default withRouter(Profile);
+const mapStateToProps = (store) => {
+    return {
+        posts: store.posts
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        removePost: (postId) => {
+            dispatch(PostsActions.removePost(postId))
+        }
+    }
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile));

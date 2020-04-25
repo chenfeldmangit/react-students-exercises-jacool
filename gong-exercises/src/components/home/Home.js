@@ -1,4 +1,5 @@
 import React from 'react';
+import {connect} from "react-redux";
 
 import "../../sass/home.scss";
 
@@ -8,25 +9,10 @@ import InitialData from "../../data/InitialData";
 import Feed from "./Feed";
 import LocalKeys from "../../data/LocalKeys";
 import useLocalStorage from "../../data/useLocalStorage";
+import PostsActions from "../../actions/PostsActions";
 
-export default function Home() {
-    const [posts, setPosts] = useLocalStorage(LocalKeys.POSTS_KEY, [], InitialData.posts);
+const Home = (props) => {
     const [myProfile] = useLocalStorage(LocalKeys.PROFILE_KEY, null, InitialData.profile);
-
-    const handleLikeClick = (id) => {
-        const i = posts.findIndex(p => p.id === id);
-        const post = posts[i];
-        const posts_clone = [...posts];
-        posts_clone[i] = {...post, like: !post.like};
-        setPosts(posts_clone);
-    };
-
-    const handleTweeting = (tweetText) => {
-        const newPost = createNewPost(tweetText);
-        const posts_clone = [...posts];
-        posts_clone.unshift(newPost);
-        setPosts(posts_clone);
-    };
 
     const createNewPost = (tweetText) => {
         return {
@@ -41,8 +27,28 @@ export default function Home() {
     return (
         <div id="feedContainer" className="middle-column-container">
             <TabTitleContainer name="Home"/>
-            <TwittingContainer tweetingHandler={handleTweeting}/>
-            <Feed posts={posts} likeHandler={handleLikeClick}/>
+            <TwittingContainer tweetingHandler={(tweetText) => props.tweet(createNewPost(tweetText))}/>
+            <Feed posts={props.posts} likeHandler={(id) => props.like(id)}/>
         </div>
     );
-}
+};
+
+const mapStateToProps = (store) => {
+    return {
+        posts: store.posts
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        like: (postId) => {
+            dispatch(PostsActions.likePost(postId))
+        },
+
+        tweet: (post) => {
+            dispatch(PostsActions.addPost(post))
+        }
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

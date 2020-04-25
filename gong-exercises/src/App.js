@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import {connect} from 'react-redux';
 
@@ -15,14 +15,24 @@ import Explore from "./components/login/Explore";
 import Login from "./components/login/Login";
 import SignUp from "./components/login/SignUp";
 import UserActions from "./actions/UserActions";
+import useLocalStorage from "./data/useLocalStorage";
+import LocalKeys from "./data/LocalKeys";
 
 const App = (props) => {
+    const [userCredentials] = useLocalStorage(LocalKeys.USER, null, null);
     const [page, setPage] = useState("EXPLORE");
+    const [autoLogin, setAutoLogin] = useState(true);
 
-    function userManagement() {
+    const setLoggedInUser = props.setLoggedInUser;
+    useEffect(() => {
+        if (userCredentials != null && autoLogin)
+            setLoggedInUser(userCredentials.userName) // auto-login
+    }, [userCredentials, autoLogin, setLoggedInUser]);
+
+    const userManagement = () => {
         switch (page) {
             case "EXPLORE":
-                return <Explore onSelect={(selection) => {setPage(selection)}}/>;
+                return <Explore userCredentials={userCredentials} onSelect={setPage}/>;
             case "LOGIN":
                 return <Login/>;
             case "SIGNUP":
@@ -30,13 +40,13 @@ const App = (props) => {
             default:
                 alert("Error");
         }
-    }
+    };
 
     return (
         props.user.loggedInUser == null ? userManagement() :
             (
                 <BrowserRouter>
-                    <Menu onLogout = { () => { props.logout(); setPage("EXPLORE"); } } />
+                    <Menu onLogout = { () => { props.logout(); setPage("EXPLORE"); setAutoLogin(false); } } />
                     <Switch>
                         <Route path={Routs.HOME} component={Home} exact/>
                         <Route path={Routs.NOTIFICATIONS} component={Notifications}/>
@@ -58,6 +68,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         logout: () => {
             dispatch(UserActions.logout())
+        },
+        setLoggedInUser: userName => {
+            dispatch(UserActions.login(userName))
         }
     }
 };
