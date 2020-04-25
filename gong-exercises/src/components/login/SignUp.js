@@ -16,11 +16,15 @@ const SignUp = (props) => {
         setUserCredentials({userName: userName, password: password});
     };
 
+    const areProperCredentials = () => {
+        return userName.length > 0 && password.length > 0;
+    };
+
     return (
         <div>
             <EditField fieldName={"user"} maxLength={20} fieldNameDisplay="User" value={userName} changeHandler={(fieldName, value) => setUserName(value)}/>
             <EditField fieldName={"pass"} maxLength={20} fieldNameDisplay="Password" value={password} changeHandler={(fieldName, value) => setPassword(value)}/>
-            <TextButton onClick={ () => performSignUp() } disabled={userName.length === 0 || password.length === 0} text="Sign Up" />
+            <TextButton onClick={ () => performSignUp() } disabled={!areProperCredentials()} text="Sign Up" />
         </div>
     );
 };
