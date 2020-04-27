@@ -14,6 +14,7 @@ import jacob_img from "../../img/jacob.jpeg";
 import more_img from "../../img/more.svg";
 import TextButton from "../common/TextButton";
 import PropTypes from "prop-types";
+import {connect} from "react-redux";
 
 const Menu = (props) => {
     return (
@@ -25,7 +26,7 @@ const Menu = (props) => {
             <ul id="menu">
                 <MenuItem path={home_img} text="Home" route={Routs.HOME} />
                 <MenuItem path={explore_img} text="Explore"/>
-                <MenuItem path={notifications_img} text="Notifications" route={Routs.NOTIFICATIONS} />
+                <MenuItem path={notifications_img} text="Notifications" badge={props.notificationsLength} route={Routs.NOTIFICATIONS} />
                 <MenuItem path={messages_img} text="Messages"/>
                 <MenuItem path={bookmarks_img} text="Bookmarks"/>
                 <MenuItem path={lists_img} text="Lists"/>
@@ -38,9 +39,15 @@ const Menu = (props) => {
     );
 };
 
+const mapStateToProps = (store) => {
+    return {
+        notificationsLength: store.mentions.length
+    }
+};
+
 Menu.propTypes = {
     onLogout: PropTypes.func.isRequired
 };
 
-export default Menu;
+export default connect(mapStateToProps)(Menu);
 

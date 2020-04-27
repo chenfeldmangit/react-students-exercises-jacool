@@ -1,11 +1,16 @@
-import { createStore, combineReducers } from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import rootSaga from "../sagas/RootSaga";
+import LocalKeys from "./LocalKeys";
 import { userReducer } from "../reducers/UserReducer";
 import {postsReducer} from "../reducers/PostsReducer";
-import LocalKeys from "./LocalKeys";
+import {mentionsReducer} from "../reducers/MentionsReducer";
 
 const combinedReducers = combineReducers({
     user: userReducer,
-    posts: postsReducer
+    posts: postsReducer,
+    mentions: mentionsReducer
 });
 
 const loadState = () => {
@@ -27,11 +32,16 @@ const saveState = (state) => {
     }
 };
 
-const store = createStore(combinedReducers, loadState(), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const sagaMiddleware = createSagaMiddleware();
+
+const store = createStore(combinedReducers, loadState(), composeWithDevTools(applyMiddleware(sagaMiddleware)));
+
+sagaMiddleware.run(rootSaga);
 
 store.subscribe(() => {
     saveState({
-        posts: store.getState().posts
+        posts: store.getState().posts,
+        mentions: store.getState().mentions
     });
 });
 

@@ -57,15 +57,15 @@ InitialData.posts = [
 
 InitialData.mentions = [
     {
-        id: "1214342",
         category: "like",
+        id: "1214342",
         author: "Eilon Reshef",
         text: "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
         authorImage: eilon_img
     },
     {
-        id: "12143562",
         category: "follow",
+        id: "12143562",
         author: "Bill Gates",
         text: "Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC",
         authorImage: bill_img

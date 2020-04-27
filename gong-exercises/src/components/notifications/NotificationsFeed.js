@@ -1,21 +1,24 @@
 import React from 'react';
 import Notification from "./Notification";
-import InitialData from "../../data/InitialData";
-import LocalKeys from "../../data/LocalKeys"
-import useLocalStorage from "../../data/useLocalStorage";
 import Throbber from "../common/Throbber";
+import {connect} from "react-redux";
 
-
-export default function NotificationsFeed() {
-    const [notifications] = useLocalStorage(LocalKeys.MENTIONS_KEY, [], InitialData.mentions);
-
+const NotificationsFeed = (props) => {
     return (
         <div>
             {
-                notifications.length === 0
+                props.notifications.length === 0
                     ? <Throbber text="Loading notifications..."/>
-                    : notifications.map(n => <Notification content={n} key={n.id}/>)
+                    : props.notifications.map(n => <Notification content={n} key={n.id}/>)
             }
         </div>
     )
-}
+};
+
+const mapStateToProps = (store) => {
+    return {
+        notifications: store.mentions
+    }
+};
+
+export default connect(mapStateToProps)(NotificationsFeed);
